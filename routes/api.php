@@ -3,8 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\TestController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,6 +17,3 @@ use App\Http\Controllers\TestController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-/****************************** 无需登录 ******************************/
-Route::get('test', [TestController::class, 'index']);
