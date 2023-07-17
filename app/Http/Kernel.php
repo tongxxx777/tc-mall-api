@@ -38,11 +38,11 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
         'api' => [
+            // 设置默认请求头
+            \App\Http\Middleware\AcceptHeader::class,
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            // 设置默认请求头
-            \App\Http\Middleware\AcceptHeader::class,
         ],
     ];
 
