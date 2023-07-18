@@ -46,7 +46,8 @@ class AuthController extends Controller
         $admin = $request->user();
         return $this->success([
             'id' => $admin->id,
-            'name' => $admin->name ?? ''
+            'username' => $admin->username,
+            'name' => $admin->username,
         ]);
     }
 
