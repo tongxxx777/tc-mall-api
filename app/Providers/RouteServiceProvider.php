@@ -29,11 +29,11 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->routes(function () {
-            Route::middleware('api')
+            Route::middleware(['api', 'autoDiffGuard:api'])
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('api')
+            Route::middleware(['admin', 'autoDiffGuard:admin'])
                 ->prefix('admin')
                 ->group(base_path('routes/admin.php'));
 

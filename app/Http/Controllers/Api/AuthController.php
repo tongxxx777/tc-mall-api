@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,11 +24,11 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-        $admin = Admin::where('username', $credentials['username'])->first();
-        if (!$admin || !Hash::check($credentials['password'], $admin->password)) {
+        $user = User::where('username', $credentials['username'])->first();
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
             return $this->fail('登录失败:用户名或密码有误');
         }
-        if (!$token = Auth::claims(['guard' => Auth::getDefaultDriver()])->login($admin)) {
+        if (!$token = Auth::claims(['guard' => Auth::getDefaultDriver()])->login($user)) {
             return $this->error('登录失败,请联系管理员');
         }
         return $this->success(['token' => 'Bearer ' . $token], '登录成功');
@@ -43,10 +43,10 @@ class AuthController extends Controller
      */
     public function me(Request $request)
     {
-        $admin = $request->user();
+        $user = $request->user();
         return $this->success([
-            'id' => $admin->id,
-            'name' => $admin->name ?? ''
+            'id' => $user->id,
+            'name' => $user->name ?? ''
         ]);
     }
 

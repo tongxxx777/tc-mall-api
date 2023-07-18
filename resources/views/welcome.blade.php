@@ -7,6 +7,6 @@
     <title>Tc Mall API</title>
 </head>
 <body>
-    <h3>API Ready!</h3>
+    <h3>Welcome To Tc-Mall. API Ready!</h3>
 </body>
 </html>

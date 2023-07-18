@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
+use App\Utils\JwtTrait;
+use Illuminate\Auth\Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class Admin extends Model
+class Admin extends Model implements JWTSubject, AuthenticatableContract
 {
-    use HasApiTokens;
+    use JwtTrait, Authenticatable;
 
     const DEFAULT_ID = 1;
 }

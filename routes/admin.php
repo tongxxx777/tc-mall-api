@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\AuthController;
 // 登录
 Route::post('login', [AuthController::class, 'login']);
 /****************************** 需要登录 ******************************/
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('checkToken')->group(function () {
     // 当前登录账号
     Route::controller(AuthController::class)->group(function () {
         // 获取登录账号信息
