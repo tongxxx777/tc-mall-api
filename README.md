@@ -16,6 +16,7 @@
 5. php artisan migrate:fresh --seed
 6. chmod -R 777 storage
 7. php artisan storage:link
+8. php artisan jwt:secret
 
 ### 其它
 -   工具类 /app/Utils
