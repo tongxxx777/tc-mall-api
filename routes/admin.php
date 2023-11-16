@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\{
+    AuthController,
+    UserController,
+    AdminController
+};
 
 /****************************** 无需登录 ******************************/
 // 登录
@@ -16,4 +19,17 @@ Route::middleware('checkToken')->group(function () {
         // 退出
         Route::post('logout', 'logout');
     });
+    // Banner
+
+    // 分类
+
+    // 商品
+    // 用户
+    Route::apiResource('users', UserController::class)->except(['store']);
+    /****************************** 系统 ******************************/
+    // 菜单(v2版本加入)
+    // 管理员
+    Route::apiResource('admins', AdminController::class);
+    // 角色(v2版本加入)
+    // 权限(v2版本加入)
 });

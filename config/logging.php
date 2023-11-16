@@ -89,7 +89,7 @@ return [
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'),
                 'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://' . env('PAPERTRAIL_URL') . ':' . env('PAPERTRAIL_PORT'),
             ],
             'processors' => [PsrLogMessageProcessor::class],
         ],
@@ -126,6 +126,23 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        /**************************** START 自定义 日志通道 START ****************************/
+        'sql' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/sql.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'common' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/common.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'common_err' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/common_err.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        /****************************** END 自定义 日志通道 END ******************************/
     ],
 
 ];

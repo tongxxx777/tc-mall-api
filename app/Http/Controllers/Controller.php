@@ -13,4 +13,7 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
     // 通用 API 响应消息
     use ApiResponse;
+
+    // 分页 每页展示条数
+    protected $perPage = 10;
 }

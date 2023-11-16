@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App\Utils\ExceptionReport;
 
 class Handler extends ExceptionHandler
 {
@@ -26,5 +27,19 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $th)
+    {
+        $reporter = new ExceptionReport();
+        // 关闭 DEBUG 时不展示详细报错
+        if (!env('APP_DEBUG')) {
+            return $reporter->closeDebugReport();
+        }
+        // 常见异常自定义处理
+        if ($reporter->intercept($th)) {
+            return $reporter->report();
+        }
+        return parent::render($request, $th);
     }
 }

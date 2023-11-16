@@ -7,6 +7,12 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Models\Admin;
+use App\Observers\AdminObserver;
+use App\Models\User;
+use App\Observers\UserObserver;
+
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +24,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        // 执行SQL查询
+        \Illuminate\Database\Events\QueryExecuted::class => [
+            \App\Listeners\QueryListener::class
+        ],
     ];
 
     /**
@@ -25,7 +35,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Admin::observe(AdminObserver::class);
+        User::observe(UserObserver::class);
     }
 
     /**
