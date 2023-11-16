@@ -11,9 +11,6 @@ class FormRequest extends BaseFormRequest
 {
     use ApiResponse;
 
-    // 验证失败时停止
-    protected $stopOnFirstFailure = true;
-
     /**
      * 是否开启验证
      *
@@ -53,6 +50,6 @@ class FormRequest extends BaseFormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        throw (new HttpResponseException($this->fail($validator->errors()->first(), 422)));
+        throw (new HttpResponseException($this->fail($validator->errors(), 422)));
     }
 }

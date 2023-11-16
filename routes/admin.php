@@ -27,9 +27,10 @@ Route::middleware('checkToken')->group(function () {
     // 用户
     Route::apiResource('users', UserController::class)->except(['store']);
     /****************************** 系统 ******************************/
-    // 菜单(v2版本加入)
     // 管理员
     Route::apiResource('admins', AdminController::class);
     // 角色(v2版本加入)
     // 权限(v2版本加入)
+    // 菜单(v2版本加入)
+    // 操作日志(v2版本加入)
 });
