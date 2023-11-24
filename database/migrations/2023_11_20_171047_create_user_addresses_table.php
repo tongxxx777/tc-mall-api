@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedInteger('user_id')->comment('用户');
+            $table->unsignedBigInteger('user_id')->comment('用户');
             $table->string('contact_name')->comment('收货人');
             $table->string('contact_phone')->comment('联系方式');
             $table->string('province')->comment('省');
