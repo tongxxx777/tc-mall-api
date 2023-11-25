@@ -25,4 +25,15 @@ class User extends Model implements JWTSubject, AuthenticatableContract
     {
         return $this->hasMany(UserAddress::class);
     }
+
+    /**
+     * 关联购物车物品
+     *
+     * @Author 佟飞
+     * @DateTime 2023-11-25
+     */
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
 }
