@@ -17,7 +17,10 @@ class ProductSkuFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->word(),
+            'description' => fake()->sentence(),
+            'price' => fake()->randomNumber(4),
+            'stock' => fake()->randomNumber(5),
         ];
     }
 }
