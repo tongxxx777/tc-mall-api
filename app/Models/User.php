@@ -27,7 +27,7 @@ class User extends Model implements JWTSubject, AuthenticatableContract
     }
 
     /**
-     * 关联购物车物品
+     * 关联购物车商品
      *
      * @Author 佟飞
      * @DateTime 2023-11-25

@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     AuthController,
     UserController,
-    AdminController
+    AdminController,
+    ProductController
 };
 
 /****************************** 无需登录 ******************************/
@@ -24,6 +25,7 @@ Route::middleware('checkToken')->group(function () {
     // 分类
 
     // 商品
+    Route::apiResource('products', ProductController::class);
     // 用户
     Route::apiResource('users', UserController::class)->except(['store']);
     /****************************** 系统 ******************************/
