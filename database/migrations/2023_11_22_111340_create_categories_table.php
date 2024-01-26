@@ -14,7 +14,14 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+
+            $table->string('title')->comment('名称');
+            $table->unsignedBigInteger('parent_id')->default(0)->comment('父级');
+            $table->unsignedTinyInteger('level')->default(1)->comment('层级');
+            $table->unsignedInteger('sort')->default(0)->comment('顺序');
+
             $table->timestamps();
+            $table->softDeletes();
         });
         DB::statement("ALTER TABLE `banners` comment '分类'");
     }
