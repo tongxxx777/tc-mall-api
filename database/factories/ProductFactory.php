@@ -29,7 +29,7 @@ class ProductFactory extends Factory
             'https://cdn.learnku.com/uploads/images/201806/01/5320/pa7DrV43Mw.jpg',
         ]);
         return [
-            'title' => fake()->word(),
+            'name' => fake()->word(),
             'description' => fake()->sentence(),
             'cover' => $cover,
             'price' => 0,
