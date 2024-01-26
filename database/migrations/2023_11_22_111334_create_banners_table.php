@@ -12,18 +12,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title')->comment('名称');
-            $table->unsignedBigInteger('parent_id')->default(0)->comment('父级');
-            $table->unsignedTinyInteger('level')->default(1)->comment('层级');
-            $table->unsignedInteger('sort')->default(0)->comment('顺序');
+            $table->string('name')->comment('名称');
+            $table->unsignedBigInteger('category_id')->comment('所属分类');
+            $table->string('image')->comment('图片');
 
             $table->timestamps();
             $table->softDeletes();
         });
-        DB::statement("ALTER TABLE `banners` comment '分类'");
+        DB::statement("ALTER TABLE `banners` comment '轮播图'");
     }
 
     /**
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('banners');
     }
 };

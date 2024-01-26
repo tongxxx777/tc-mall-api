@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('product_id')->comment('所属商品');
-            $table->string('title')->comment('SKU 名称');
+            $table->string('name')->comment('SKU 名称');
             $table->text('description')->comment('SKU 描述');
             $table->unsignedDecimal('price', 10, 2)->comment('SKU 价格');
             $table->unsignedInteger('stock')->comment('库存');
