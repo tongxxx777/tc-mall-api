@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        DB::statement("ALTER TABLE `banners` comment '分类'");
+        DB::statement("ALTER TABLE `categories` comment '分类'");
     }
 
     /**
