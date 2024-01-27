@@ -17,7 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // 生成超管账号
         $this->call([AdminSeeder::class]);
+        // 生成默认轮播图
+        $this->call([BannerSeeder::class]);
+        // 生成默认分类
+        $this->call([CategorySeeder::class]);
         // 创建用户
         $users = User::factory(10)->create();
         foreach ($users as $user) {

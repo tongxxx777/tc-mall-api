@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-
-            $table->string('name')->comment('名称');
             $table->unsignedBigInteger('pid')->default(0)->comment('父级');
+            $table->string('name')->comment('名称');
+            $table->string('icon')->nullable()->default('')->comment('图标');
             $table->unsignedTinyInteger('level')->default(1)->comment('层级');
             $table->unsignedInteger('sort')->default(0)->comment('顺序');
 

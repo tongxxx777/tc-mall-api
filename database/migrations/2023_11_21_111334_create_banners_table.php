@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('name')->comment('名称');
-            $table->unsignedBigInteger('category_id')->comment('所属分类');
             $table->string('image')->comment('图片');
+            $table->unsignedInteger('sort')->default(0)->comment('顺序');
 
             $table->timestamps();
             $table->softDeletes();
