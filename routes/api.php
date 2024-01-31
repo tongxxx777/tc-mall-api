@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\IndexController;
 use App\Http\Controllers\Api\AuthController;
 
 /****************************** 无需登录 ******************************/
+Route::get('index', [IndexController::class, 'index']);
 // 登录
 Route::post('login', [AuthController::class, 'login']);
 /****************************** 需要登录 ******************************/
