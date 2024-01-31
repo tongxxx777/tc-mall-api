@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedInteger('category_id')->comment('所属分类');
             $table->string('name')->comment('商品名称');
             $table->text('description')->comment('商品详情');
             $table->string('cover')->comment('封面图');

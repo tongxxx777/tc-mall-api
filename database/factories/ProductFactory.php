@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -28,7 +29,9 @@ class ProductFactory extends Factory
             'https://cdn.learnku.com/uploads/images/201806/01/5320/2JMRaFwRpo.jpg',
             'https://cdn.learnku.com/uploads/images/201806/01/5320/pa7DrV43Mw.jpg',
         ]);
+        $category_id = fake()->randomElement(Category::where('level', '<>', 1)->pluck('id')->toArray());
         return [
+            'category_id' => $category_id,
             'name' => fake()->word(),
             'description' => fake()->sentence(),
             'cover' => $cover,
